@@ -1,0 +1,354 @@
+﻿@model FinalProject.Models.Course
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+
+    <!-- Page Heading -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="text-purple fw-bold">
+
+                <i class="bi bi-journal-bookmark-fill me-2"></i>
+
+                @(Model.CourseId == 0 ? "Add New Course" : "Update Course")
+
+            </h2>
+
+            <p class="text-muted">
+
+                Enter the course information below.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <form asp-action="Upsert" method="post">
+
+        <input asp-for="CourseId" hidden />
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3">
+        </div>
+
+
+
+        <!-- Course Information -->
+
+        <div class="card shadow mb-4">
+
+            <div class="card-header card-header-purple text-white fw-bold fs-5 py-3 px-4">
+
+                Course Information
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <!-- Course Code -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="CourseCode"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="CourseCode"
+                               class="form-control"
+                               placeholder="Example : BCA101" />
+
+                        <span asp-validation-for="CourseCode"
+                              class="text-danger"></span>
+
+                    </div>
+
+
+
+                    <!-- Course Name -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="CourseName"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="CourseName"
+                               class="form-control"
+                               placeholder="Bachelor of Computer Applications" />
+
+                        <span asp-validation-for="CourseName"
+                              class="text-danger"></span>
+
+                    </div>
+
+
+
+                    <!-- Department -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="Department"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <select asp-for="Department"
+                                class="form-select">
+
+                            <option value="">-- Select Department --</option>
+
+                            <option>Computer Science</option>
+
+                            <option>Information Technology</option>
+
+                            <option>Electronics & Communication</option>
+
+                            <option>Mechanical Engineering</option>
+
+                            <option>Civil Engineering</option>
+
+                            <option>Management</option>
+
+                        </select>
+
+                        <span asp-validation-for="Department"
+                              class="text-danger"></span>
+
+                    </div>
+
+
+
+                    <!-- Course Type -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="CourseType"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <select asp-for="CourseType"
+                                class="form-select">
+
+                            <option value="">-- Select Type --</option>
+
+                            <option>UG</option>
+
+                            <option>PG</option>
+
+                            <option>Diploma</option>
+
+                            <option>Certificate</option>
+
+                        </select>
+
+                        <span asp-validation-for="CourseType"
+                              class="text-danger"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Academic Information -->
+
+        <div class="card shadow mb-4">
+
+            <div class="card-header card-header-purple text-white fw-bold fs-5 py-3 px-4">
+
+                Academic Information
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label asp-for="DurationYears"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="DurationYears"
+                               class="form-control" />
+
+                        <span asp-validation-for="DurationYears"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label asp-for="TotalSemesters"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="TotalSemesters"
+                               class="form-control" />
+
+                        <span asp-validation-for="TotalSemesters"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label asp-for="TotalCredits"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="TotalCredits"
+                               class="form-control" />
+
+                        <span asp-validation-for="TotalCredits"
+                              class="text-danger"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Additional Information -->
+
+        <div class="card shadow mb-4">
+
+            <div class="card-header card-header-purple text-white fw-bold fs-5 py-3 px-4">
+
+                Additional Information
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="mb-3">
+
+                    <label asp-for="Description"
+                           class="form-label fw-semibold">
+                    </label>
+
+                    <textarea asp-for="Description"
+                              rows="4"
+                              class="form-control"
+                              placeholder="Enter course description"></textarea>
+
+                    <span asp-validation-for="Description"
+                          class="text-danger"></span>
+
+                </div>
+
+
+
+                <!-- Status -->
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-semibold">
+
+                        Status
+
+                    </label>
+
+                    <div>
+
+                        <div class="form-check form-check-inline">
+
+                            <input asp-for="Status"
+                                   value="Active"
+                                   type="radio"
+                                   class="form-check-input" />
+
+                            <label class="form-check-label">
+
+                                Active
+
+                            </label>
+
+                        </div>
+
+                        <div class="form-check form-check-inline">
+
+                            <input asp-for="Status"
+                                   value="Inactive"
+                                   type="radio"
+                                   class="form-check-input" />
+
+                            <label class="form-check-label">
+
+                                Inactive
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <span asp-validation-for="Status"
+                          class="text-danger"></span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Buttons -->
+
+        <div class="text-end">
+
+            <button type="reset"
+                    class="btn btn-warning text-dark">
+
+                <i class="bi bi-arrow-clockwise me-1"></i>
+                Reset
+
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-danger ms-2">
+
+                <i class="bi bi-x-circle me-1"></i>
+                Cancel
+
+            </a>
+
+            <button type="submit"
+                    class="btn btn-purple ms-2">
+
+                <i class="bi bi-check-circle me-1"></i>
+                Save Course
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}

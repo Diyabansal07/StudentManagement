@@ -1,0 +1,407 @@
+﻿@model FinalProject.View_Model.SettingsViewModel
+
+@{
+    ViewData["Title"] = "Settings";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<div class="container py-5">
+
+    <!-- Page Heading -->
+    <div class="settings-header mb-5">
+
+        <h2 class="settings-title">
+
+            <i class="bi bi-gear-fill me-2"></i>
+
+            Account Settings
+
+        </h2>
+
+        <p class="text-muted">
+
+            Manage your profile information and account security.
+
+        </p>
+
+    </div>
+
+    @if (TempData["success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+
+            <i class="bi bi-check-circle-fill me-2"></i>
+
+            @TempData["success"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+
+        </div>
+    }
+
+    <!-- ===================== -->
+    <!-- Profile Information -->
+    <!-- ===================== -->
+
+    <div class="card settings-card mb-4">
+
+        <div class="card-header">
+
+            <i class="bi bi-person-circle me-2"></i>
+
+            Profile Information
+
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Index" method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3">
+                </div>
+
+                <div class="row">
+
+                    <!-- Full Name -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="FullName"
+                               class="form-label">
+                        </label>
+
+                        <input asp-for="FullName"
+                               class="form-control"
+                               placeholder="Enter Full Name" />
+
+                        <span asp-validation-for="FullName"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Email -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="Email"
+                               class="form-label">
+                        </label>
+
+                        <input asp-for="Email"
+                               class="form-control"
+                               placeholder="Enter Email Address" />
+
+                        <span asp-validation-for="Email"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                    <!-- Phone -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label asp-for="PhoneNumber"
+                               class="form-label">
+                        </label>
+
+                        <input asp-for="PhoneNumber"
+                               class="form-control"
+                               placeholder="Enter Phone Number" />
+
+                        <span asp-validation-for="PhoneNumber"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary-custom">
+
+                    <i class="bi bi-check-circle me-2"></i>
+
+                    Save Changes
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- ===================== -->
+    <!-- Security -->
+    <!-- ===================== -->
+
+    <div class="card settings-card mb-4">
+
+        <div class="card-header">
+
+            <i class="bi bi-shield-lock me-2"></i>
+
+            Security
+
+        </div>
+
+        <div class="card-body">
+
+            <h5 class="fw-bold">
+
+                Password
+
+            </h5>
+
+            <p class="text-muted">
+
+                Your password is securely protected using
+                ASP.NET Core Identity.
+
+                We recommend changing your password
+                regularly to keep your account secure.
+
+            </p>
+
+            <a asp-area="Identity"
+               asp-page="/Account/Manage/ChangePassword"
+               class="btn btn-outline-custom">
+
+                <i class="bi bi-key-fill me-2"></i>
+
+                Change Password
+
+            </a>
+
+        </div>
+
+    </div>
+    <!-- ====================================== -->
+    <!-- Account Information -->
+    <!-- ====================================== -->
+
+    <div class="card settings-card">
+
+        <div class="card-header">
+
+            <i class="bi bi-person-badge me-2"></i>
+
+            Account Information
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <div class="info-box-custom">
+
+                        <small class="text-muted">
+                            Username
+                        </small>
+
+                        <h6 class="mt-2 fw-bold">
+
+                            @Model.UserName
+
+                        </h6>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <div class="info-box-custom">
+
+                        <small class="text-muted">
+                            User ID
+                        </small>
+
+                        <h6 class="mt-2 fw-bold">
+
+                            @Model.UserId
+
+                        </h6>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <div class="info-box-custom">
+
+                        <small class="text-muted">
+                            Email Confirmed
+                        </small>
+
+                        <h6 class="mt-2">
+
+                            @if (Model.EmailConfirmed)
+                            {
+                                <span class="badge bg-success">
+
+                                    Confirmed
+
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">
+
+                                    Not Confirmed
+
+                                </span>
+                            }
+
+                        </h6>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <div class="info-box-custom">
+
+                        <small class="text-muted">
+                            Phone Confirmed
+                        </small>
+
+                        <h6 class="mt-2">
+
+                            @if (Model.PhoneNumberConfirmed)
+                            {
+                                <span class="badge bg-success">
+
+                                    Confirmed
+
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">
+
+                                    Pending
+
+                                </span>
+                            }
+
+                        </h6>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<style>
+
+    .settings-title {
+        font-size: 38px;
+        font-weight: 700;
+        color: #5B3DF5;
+    }
+
+    .settings-card {
+        border: none;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 12px 35px rgba(91,61,245,.10);
+        transition: .3s;
+    }
+
+        .settings-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(91,61,245,.16);
+        }
+
+        .settings-card .card-header {
+            background: linear-gradient(135deg,#5B3DF5,#7C3AED,#9D4EDD);
+            color: white;
+            padding: 18px 28px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .settings-card .card-body {
+            padding: 35px;
+        }
+
+    .form-label {
+        font-weight: 600;
+        color: #4A3A78;
+    }
+
+    .form-control {
+        height: 52px;
+        border-radius: 12px;
+        border: 1px solid #DDD;
+    }
+
+        .form-control:focus {
+            border-color: #7C3AED;
+            box-shadow: 0 0 0 .18rem rgba(124,58,237,.15);
+        }
+
+    .btn-primary-custom {
+        background: linear-gradient(135deg,#5B3DF5,#7C3AED);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 12px;
+        font-weight: 600;
+    }
+
+        .btn-primary-custom:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(91,61,245,.30);
+        }
+
+    .btn-outline-custom {
+        border: 2px solid #7C3AED;
+        color: #7C3AED;
+        border-radius: 12px;
+        padding: 12px 28px;
+        font-weight: 600;
+    }
+
+        .btn-outline-custom:hover {
+            background: #7C3AED;
+            color: white;
+        }
+
+    .info-box-custom {
+        background: #F8F5FF;
+        border-left: 5px solid #7C3AED;
+        border-radius: 14px;
+        padding: 18px;
+    }
+
+    .text-danger {
+        font-size: .9rem;
+    }
+
+</style>
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}

@@ -1,0 +1,803 @@
+﻿@* @{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<main class="app-main">
+
+    <!-- Page Header -->
+    <div class="app-content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="mb-0">Student Management Dashboard</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="app-content">
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <!-- Total Students -->
+                <div class="col-lg-3 col-6">
+                    <div class="small-box text-bg-primary">
+                        <div class="inner">
+                            <h3>150</h3>
+                            <p>Total Students</p>
+                        </div>
+
+                        <svg class="small-box-icon"
+                             fill="currentColor"
+                             viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0z"></path>
+                        </svg>
+
+                        <a href="#" class="small-box-footer">
+                            More Info <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Courses -->
+                <div class="col-lg-3 col-6">
+                    <div class="small-box text-bg-success">
+                        <div class="inner">
+                            <h3>12</h3>
+                            <p>Total Courses</p>
+                        </div>
+
+                        <svg class="small-box-icon"
+                             fill="currentColor"
+                             viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"></path>
+                        </svg>
+
+                        <a href="#" class="small-box-footer">
+                            More Info <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Attendance -->
+                <div class="col-lg-3 col-6">
+                    <div class="small-box text-bg-warning">
+                        <div class="inner">
+                            <h3>89%</h3>
+                            <p>Attendance Rate</p>
+                        </div>
+
+                        <svg class="small-box-icon"
+                             fill="currentColor"
+                             viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75H3v-6.75z"></path>
+                        </svg>
+
+                        <a href="#" class="small-box-footer">
+                            More Info <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Fees -->
+                <div class="col-lg-3 col-6">
+                    <div class="small-box text-bg-danger">
+                        <div class="inner">
+                            <h3>₹50K</h3>
+                            <p>Fees Collected</p>
+                        </div>
+
+                        <svg class="small-box-icon"
+                             fill="currentColor"
+                             viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"></path>
+                        </svg>
+
+                        <a href="#" class="small-box-footer">
+                            More Info <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</main> *@
+
+@model FinalProject.Models.Dashboard
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<main class="app-main">
+
+    <!-- Dashboard Header -->
+    <div class="container-fluid py-4">
+
+        <div class="welcome-banner mb-4">
+
+            <div>
+
+                <h1>
+                    Welcome Back 👋
+                </h1>
+
+                <p>
+                    Here's an overview of your Student Management System.
+                    Manage students, courses and academic activities from one dashboard.
+                </p>
+
+            </div>
+
+            <div class="year-box">
+
+                <span>Academic Year</span>
+
+                <h4>2025-26</h4>
+
+            </div>
+
+        </div>
+
+        <!-- Statistics -->
+
+        <div class="row g-4">
+
+            <!-- Total Students -->
+            <div class="col-xl-3 col-md-6">
+                <a asp-controller="Student"
+                   asp-action="Index"
+                   class="stats-card">
+
+                    <div class="stats-left">
+
+                        <small>Total Students</small>
+
+                        <h2>@Model.TotalStudents</h2>
+
+                        <span>Registered Students</span>
+
+                    </div>
+
+                    <div class="stats-icon">
+
+                        <i class="bi bi-people-fill"></i>
+
+                    </div>
+
+                </a>
+            </div>
+
+
+
+            <!-- Total Courses -->
+            <div class="col-xl-3 col-md-6">
+                <a asp-controller="Course"
+                   asp-action="Index"
+                   class="stats-card">
+
+                    <div class="stats-left">
+
+                        <small>Total Courses</small>
+
+                        <h2>@Model.TotalCourses</h2>
+
+                        <span>Courses Available</span>
+
+                    </div>
+
+                    <div class="stats-icon">
+
+                        <i class="bi bi-book-half"></i>
+
+                    </div>
+
+                </a>
+            </div>
+
+
+
+            <!-- Active Students -->
+            <div class="col-xl-3 col-md-6">
+                <a asp-controller="Student"
+                   asp-action="Index"
+                   class="stats-card">
+
+                    <div class="stats-left">
+
+                        <small>Active Students</small>
+
+                        <h2>@Model.ActiveStudents</h2>
+
+                        <span>Currently Active</span>
+
+                    </div>
+
+                    <div class="stats-icon">
+
+                        <i class="bi bi-person-check-fill"></i>
+
+                    </div>
+
+                </a>
+            </div>
+
+
+
+            <!-- Active Courses -->
+            <div class="col-xl-3 col-md-6">
+                <a asp-controller="Course"
+                   asp-action="Index"
+                   class="stats-card">
+
+                    <div class="stats-left">
+
+                        <small>Active Courses</small>
+
+                        <h2>@Model.ActiveCourses</h2>
+
+                        <span>Running Now</span>
+
+                    </div>
+
+                    <div class="stats-icon">
+
+                        <i class="bi bi-journal-check"></i>
+
+                    </div>
+
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Quick Actions -->
+        @* <div class="card shadow border-0 mt-4">
+
+            <div class="card-header bg-white d-flex align-items-center justify-content-between">
+
+                <h5 class="mb-0 fw-bold">
+                    
+                    Quick Actions
+                </h5>
+
+                <small class="text-muted">
+                    Frequently Used Actions
+                </small>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row g-3">
+
+                    <div class="col-md-4">
+
+                        <a asp-controller="Student"
+                           asp-action="Upsert"
+                           class="quick-action-btn btn btn-outline-primary">
+
+                            <i class="bi bi-person-plus-fill fs-4 mb-2"></i>
+
+                            <span>Add Student</span>
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <a asp-controller="Course"
+                           asp-action="Index"
+                           class="quick-action-btn btn btn-outline-success">
+
+                            <i class="bi bi-book-half fs-4 mb-2"></i>
+
+                            <span>Course Directory</span>
+
+                        </a>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <a href="#"
+                           class="quick-action-btn btn btn-outline-danger">
+
+                            <i class="bi bi-bar-chart-line-fill fs-4 mb-2"></i>
+
+                            <span>Reports</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div> *@
+        @* <div class="dashboard-card mt-4">
+
+            <h3 class="mb-4">Quick Actions</h3>
+
+            <div class="quick-actions-grid">
+
+                <a asp-controller="Student"
+                   asp-action="Upsert"
+                   class="action-card">
+
+                    <i class="fas fa-user-plus"></i>
+                    <h5>Add Student</h5>
+                    <p>Create Student profile</p>
+
+                </a>
+
+                <a asp-controller="Student"
+                   asp-action="Index"
+                   class="action-card">
+
+                    <i class="fas fa-users"></i>
+                    <h5>Student Directory</h5>
+                    <p>Manage Student</p>
+
+                </a>
+
+                <a asp-controller="Course"
+                   asp-action="Upsert"
+                   class="action-card">
+
+                    <i class="fas fa-building"></i>
+                    <h5>Add Course</h5>
+                    <p>Create Course profile</p>
+
+                </a>
+
+                <a asp-controller="Course"
+                   asp-action="Index"
+                   class="action-card">
+
+                    <i class="fas fa-folder-open"></i>
+                    <h5>Course Directory</h5>
+                    <p>Manage Courses</p>
+
+                </a>
+
+            </div>
+
+        </div> *@
+        <div class="dashboard-card mt-3">
+
+            <h3 class="section-title">
+
+                Quick Actions
+
+            </h3>
+
+            <div class="quick-actions-grid">
+
+                <a asp-controller="Student"
+                   asp-action="Upsert"
+                   class="action-card">
+
+                    <div class="action-icon">
+
+                        <i class="bi bi-person-plus-fill"></i>
+
+                    </div>
+
+                    <h5>Add Student</h5>
+
+                    <p>Create a new student profile.</p>
+
+                </a>
+
+                <a asp-controller="Student"
+                   asp-action="Index"
+                   class="action-card">
+
+                    <div class="action-icon">
+
+                        <i class="bi bi-people-fill"></i>
+
+                    </div>
+
+                    <h5>Student Directory</h5>
+
+                    <p>View and manage all students.</p>
+
+                </a>
+
+                <a asp-controller="Course"
+                   asp-action="Upsert"
+                   class="action-card">
+
+                    <div class="action-icon">
+
+                        <i class="bi bi-book-fill"></i>
+
+                    </div>
+
+                    <h5>Add Course</h5>
+
+                    <p>Create a new course.</p>
+
+                </a>
+
+            </div>
+
+        </div>
+        </div>
+
+        </div>
+        <div class="card shadow border-0 mt-4">
+
+            <div class="card-header bg-white">
+                <h5 class="mb-0 fw-bold">
+                    Recent Students
+                </h5>
+            </div>
+
+            <div class="card-body p-0">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="table-light">
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Course</th>
+                            <th>Department</th>
+                            <th>Status</th>
+                            <th>Admission Date</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var student in Model.RecentStudents)
+                        {
+                            <tr>
+
+                                <td>
+                                    @student.FirstName @student.LastName
+                                </td>
+
+                                <td>
+                                    @student.Email
+                                </td>
+
+                                <td>
+                                    @(student.Course?.CourseName ?? "N/A")
+                                </td>
+
+                                <td>
+                                    @student.Department
+                                </td>
+
+                                <td>
+                                    @if (student.Status == "Active")
+                                    {
+                                        <span class="badge bg-success">
+                                            Active
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">
+                                            @student.Status
+                                        </span>
+                                    }
+                                </td>
+
+                                <td>
+                                    @student.AdmissionDate?.ToString("dd MMM yyyy")
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+  <style>
+        /*=====================================
+        WELCOME
+        ======================================*/
+
+        .welcome-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 32px;
+            border-radius: 22px;
+            background: linear-gradient(135deg,#5B3DF5,#7C3AED,#A855F7);
+            color: #fff;
+            box-shadow: 0 12px 30px rgba(91,61,245,.18);
+            margin-bottom: 28px;
+            min-height: 145px;
+        }
+
+            .welcome-banner h1 {
+                font-size: 34px;
+                font-weight: 700;
+                margin-bottom: 8px;
+            }
+
+            .welcome-banner p {
+                font-size: 15px;
+                line-height: 1.6;
+                max-width: 550px;
+                opacity: .92;
+            }
+
+        .year-box {
+            padding: 16px 28px;
+            border-radius: 16px;
+            background: rgba(255,255,255,.16);
+            backdrop-filter: blur(12px);
+        }
+
+            .year-box h4 {
+                font-size: 22px;
+                margin-top: 4px;
+            }
+        /*=====================================
+        STAT CARDS
+        ======================================*/
+
+        .stats-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px;
+            background: white;
+            border-radius: 22px;
+            text-decoration: none;
+            color: #222;
+            position: relative;
+            overflow: hidden;
+            transition: .35s;
+            box-shadow: 0 15px 35px rgba(0,0,0,.08);
+        }
+
+            .stats-card::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 6px;
+                background: #7C3AED;
+                transform: scaleY(0);
+                transition: .35s;
+            }
+
+            .stats-card:hover {
+                transform: translateY(-10px) scale(1.03);
+                box-shadow: 0 25px 55px rgba(124,58,237,.28);
+            }
+
+                .stats-card:hover::before {
+                    transform: scaleY(1);
+                }
+
+        .stats-left h2 {
+            font-size: 34px;
+            font-weight: 800;
+            margin: 12px 0;
+        }
+
+        .stats-left span {
+            color: #7C3AED;
+            font-weight: 600;
+        }
+
+        .stats-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: #F3E8FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .35s;
+        }
+
+            .stats-icon i {
+                font-size: 34px;
+                color: #7C3AED;
+            }
+
+        .stats-card:hover .stats-icon {
+            transform: rotate(-12deg) scale(1.12);
+            background: #7C3AED;
+        }
+
+            .stats-card:hover .stats-icon i {
+                color: white;
+            }
+
+        /*=====================================
+        QUICK ACTIONS
+        ======================================*/
+
+        .section-title {
+            font-size: 27px;
+            font-weight: 600;
+            color: #2F3545;
+            margin-bottom: 20px;
+            letter-spacing: -.3px;
+        }
+
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 18px;
+        }
+
+        .action-card {
+            padding: 18px 22px;
+            border-radius: 18px;
+            background: #fff;
+            border: 1px solid #ECECEC;
+            box-shadow: 0 10px 25px rgba(0,0,0,.05);
+            transition: .3s;
+            text-decoration: none;
+            color: #222;
+            min-height: 135px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .action-card::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 4px;
+                background: linear-gradient(90deg,#5B3DF5,#A855F7);
+                transform: scaleX(0);
+                transition: .35s;
+            }
+
+            .action-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(124,58,237,.22);
+            }
+
+                .action-card:hover::after {
+                    transform: scaleX(1);
+                }
+
+        .action-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: #F3E8FF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 14px;
+            transition: .3s;
+        }
+
+            .action-icon i {
+                font-size: 22px;
+                color: #7C3AED;
+            }
+
+        .action-card:hover .action-icon {
+            background: #7C3AED;
+            transform: rotate(-8deg);
+        }
+
+            .action-card:hover .action-icon i {
+                color: white;
+            }
+
+        .action-card h5 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .action-card p {
+            font-size: 14px;
+            color: #777;
+            margin: 0;
+        }
+
+        .table {
+            margin: 0;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+
+            .table thead {
+                background: #F4EEFF;
+            }
+
+                .table thead th {
+                    border: none;
+                    padding: 18px;
+                    font-weight: 600;
+                    font-size: 15px;
+                    color: #5B3DF5;
+                }
+
+            .table tbody tr {
+                background: white;
+                box-shadow: 0 6px 15px rgba(0,0,0,.05);
+                transition: .3s;
+            }
+
+                .table tbody tr:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 12px 25px rgba(124,58,237,.12);
+                }
+
+            .table tbody td {
+                padding: 18px;
+                border: none;
+                vertical-align: middle;
+            }
+
+            .table tbody tr td:first-child {
+                border-radius: 14px 0 0 14px;
+            }
+
+            .table tbody tr td:last-child {
+                border-radius: 0 14px 14px 0;
+            }
+            .badge-active{
+
+background:#E9F9F0;
+
+color:#13A463;
+
+padding:6px 14px;
+
+border-radius:30px;
+
+font-weight:600;
+
+font-size:13px;
+
+}
+
+.badge-inactive{
+
+background:#F4F4F5;
+
+color:#666;
+
+padding:6px 14px;
+
+border-radius:30px;
+
+font-weight:600;
+
+font-size:13px;
+
+}
+  </style>
+       
+       
+
+    
+
+</main>

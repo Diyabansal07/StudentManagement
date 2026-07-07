@@ -1,0 +1,558 @@
+﻿@* @page
+@model FinalProject.Views.Student.CreateModel
+@{
+} *@
+
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@model Student
+@* <div class="card p-4 shadow-sm border-0">
+    <div class="container mt-4">
+        <h2>Add Student</h2>
+
+        <form asp-action="Upsert" method="post">
+            <div class="student-card">
+                <div class="section-title">
+                    Personal Information
+                </div>
+
+                <input type="hidden" asp-for="StudentId" />
+
+
+                <div class="row">
+                    <div class="col-6">
+                        <label>First Name</label>
+                        <input asp-for="FirstName" class="form-control" />
+                    </div>
+
+                    <div class="col-6">
+                        <label>Last Name</label>
+                        <input asp-for="LastName" class="form-control" />
+                    </div>
+
+                </div>
+              
+                <div class="mb-3">
+                    <label class="form-label d-block">Gender</label>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" asp-for="Gender" value="Male"
+                               class="form-check-input" />
+                        <label class="form-check-label">Male</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input type="radio" asp-for="Gender" value="Female"
+                               class="form-check-input" />
+                        <label class="form-check-label">Female</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="DateOfBirth" class="form-label"></label>
+                        <input asp-for="DateOfBirth" type="date" class="form-control" />
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Phone Number</label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Address</label>
+                        <input asp-for="Address" class="form-control" />
+                    </div>
+
+                    <div class="section-title">
+                        Professional Information
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Email</label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+
+       
+
+                    <div class="col-md-6 mb-3">
+                        <label>Department</label>
+                        <select asp-for="Department"
+                                asp-items="ViewBag.Departments"
+                                class="form-select">
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Electronics and Communication">Electronics and Communication</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        </select>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label>Course</label>
+                        <select asp-for="Course"
+                                asp-items="ViewBag.Course"
+                                class="form-select">
+                            <option value="BCA">BCA</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Electronics and Communication">Electronics and Communication</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Section</label>
+                        <input asp-for="Section" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Semester</label>
+                        <input asp-for="Semester" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label>AdmissionDate</label>
+                        <input asp-for="AdmissionDate" type="date" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Status</label>
+                        <input asp-for="Status" class="form-control" />
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-success">
+                        Save Student
+                    </button>
+
+             
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} *@
+
+<div class="container py-4">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-purple">
+            Student Registration
+        </h2>
+
+        <p class="text-muted">
+            Enter the student's personal and academic information.
+        </p>
+    </div>
+
+    <form asp-action="Upsert" method="post">
+
+        <input type="hidden" asp-for="StudentId" />
+
+        <div asp-validation-summary="ModelOnly"
+             class="alert alert-danger">
+        </div>
+
+        <!-- PERSONAL INFORMATION CARD -->
+
+        <div class="card shadow-lg border-0 rounded-4 mb-4">
+
+            <div class="card-header bg-purple text-white fw-bold fs-5">
+                Personal Information
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <!-- First Name -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="FirstName"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="FirstName"
+                               class="form-control"
+                               placeholder="Enter First Name" />
+
+                        <span asp-validation-for="FirstName"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <!-- Last Name -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="LastName"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="LastName"
+                               class="form-control"
+                               placeholder="Enter Last Name" />
+
+                        <span asp-validation-for="LastName"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <!-- Gender -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label fw-semibold">
+                            Gender
+                        </label>
+
+                        <div>
+
+                            <div class="form-check form-check-inline">
+
+                                <input asp-for="Gender"
+                                       value="Male"
+                                       class="form-check-input"
+                                       type="radio" />
+
+                                <label class="form-check-label">
+                                    Male
+                                </label>
+
+                            </div>
+
+                            <div class="form-check form-check-inline">
+
+                                <input asp-for="Gender"
+                                       value="Female"
+                                       class="form-check-input"
+                                       type="radio" />
+
+                                <label class="form-check-label">
+                                    Female
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                        <span asp-validation-for="Gender"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <!-- Date Of Birth -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="DateOfBirth"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="DateOfBirth"
+                               type="date"
+                               class="form-control" />
+
+                        <span asp-validation-for="DateOfBirth"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <!-- Phone -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="PhoneNumber"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="PhoneNumber"
+                               class="form-control"
+                               placeholder="Enter Phone Number" />
+
+                        <span asp-validation-for="PhoneNumber"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <!-- Email -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="Email"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="Email"
+                               class="form-control"
+                               placeholder="Enter Email Address" />
+
+                        <span asp-validation-for="Email"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <!-- Address -->
+
+                    <div class="col-12 mb-3">
+
+                        <label asp-for="Address"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <textarea asp-for="Address"
+                                  rows="3"
+                                  class="form-control"
+                                  placeholder="Enter Complete Address"></textarea>
+
+                        <span asp-validation-for="Address"
+                              class="text-danger"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Academic Information starts here -->
+        <!-- ACADEMIC INFORMATION CARD -->
+
+        <div class="card shadow-lg border-0 rounded-4 mb-4">
+
+            <div class="card-header bg-purple text-white fw-bold fs-5 py-3">
+                Academic Information
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <!-- Department -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="Department"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <select asp-for="Department"
+                                asp-items="ViewBag.Departments"
+                                class="form-select">
+
+                            <option value="">-- Select Department --</option>
+
+                            <option value="Computer Science">
+                                Computer Science
+                            </option>
+
+                            <option value="Information Technology">
+                                Information Technology
+                            </option>
+
+                            <option value="Electronics and Communication">
+                                Electronics and Communication
+                            </option>
+
+                            <option value="Mechanical Engineering">
+                                Mechanical Engineering
+                            </option>
+
+                        </select>
+
+                        <span asp-validation-for="Department"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <!-- Course -->
+
+                    <div class="col-md-6 mb-3">
+
+                      @*   <label asp-for="Course"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <select asp-for="Course"
+                                asp-items="ViewBag.Course"
+                                class="form-select">
+
+                            <option value="">-- Select Course --</option>
+
+                            <option value="BCA">BCA</option>
+                            <option value="B.Tech">B.Tech</option>
+                            <option value="B.Sc">B.Sc</option>
+                            <option value="B.Com">B.Com</option>
+                            <option value="MCA">MCA</option>
+
+                        </select>
+
+                        <span asp-validation-for="Course"
+                              class="text-danger"></span> *@
+                       
+                        <label asp-for="CourseId"
+                               class="form-label fw-semibold">
+                            Course
+                        </label>
+
+                        <select asp-for="CourseId"
+                                class="form-select">
+
+                            <option value="">-- Select Course --</option>
+
+                            @foreach (var item in Model.CourseList)
+                            {
+                                <option value="@item.CourseId">
+                                    @item.CourseName
+                                </option>
+                            }
+
+                        </select>
+
+                        <span asp-validation-for="CourseId"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <!-- Section -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="Section"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="Section"
+                               class="form-control"
+                               placeholder="Enter Section" />
+
+                        <span asp-validation-for="Section"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <!-- Semester -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="Semester"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="Semester"
+                               class="form-control"
+                               placeholder="Enter Semester" />
+
+                        <span asp-validation-for="Semester"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <!-- Admission Date -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="AdmissionDate"
+                               class="form-label fw-semibold">
+                        </label>
+
+                        <input asp-for="AdmissionDate"
+                               type="date"
+                               class="form-control" />
+
+                        <span asp-validation-for="AdmissionDate"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <!-- Status -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label fw-semibold">
+                            Status
+                        </label>
+
+                        <div class="mt-2">
+
+                            <div class="form-check form-check-inline">
+
+                                <input asp-for="Status"
+                                       value="Active"
+                                       type="radio"
+                                       class="form-check-input" />
+
+                                <label class="form-check-label">
+                                    Active
+                                </label>
+
+                            </div>
+
+                            <div class="form-check form-check-inline">
+
+                                <input asp-for="Status"
+                                       value="Inactive"
+                                       type="radio"
+                                       class="form-check-input" />
+
+                                <label class="form-check-label">
+                                    Inactive
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                        <span asp-validation-for="Status"
+                              class="text-danger"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Buttons -->
+
+        <div class="d-flex justify-content-end gap-2 mb-4">
+
+            <button type="reset"
+                    class="btn btn-outline-secondary px-4">
+                <i class="bi bi-arrow-clockwise"></i>
+                Reset
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-outline-danger px-4">
+                <i class="bi bi-x-circle"></i>
+                Cancel
+            </a>
+
+            <button type="submit"
+                    class="btn btn-purple px-4">
+
+                <i class="bi bi-check-circle"></i>
+
+                @(Model.StudentId == 0 ? "Save Student" : "Update Student")
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}
