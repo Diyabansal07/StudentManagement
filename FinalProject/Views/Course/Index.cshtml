@@ -7,8 +7,7 @@
 <div class="container-fluid py-4">
 
     <!-- Page Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-
+    <div class="d-flex justify-content-between align-items-center flex-wrap course-card-header">
         <div>
             <h2 class="text-purple fw-bold mb-1">
                 <i class="bi bi-journal-bookmark-fill me-2"></i>
@@ -22,10 +21,9 @@
 
         <a asp-controller="Course"
            asp-action="Upsert"
-           class="btn btn-purple">
+           class="btn btn-purple add-course-btn">
 
             <i class="bi bi-plus-circle me-2"></i>
-
             Add Course
 
         </a>
@@ -52,11 +50,11 @@
 
     <!-- Card -->
 
-    <div class="card shadow">
+    <div class="card shadow mt-3">
 
         <div class="card-header card-header-purple py-3">
 
-            <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
 
                 <!-- Left Heading -->
                 <h5 class="text-white fw-semibold mb-0">
@@ -65,10 +63,10 @@
                 </h5>
 
                 <!-- Right Side -->
-                <div class="d-flex align-items-center gap-2">
+                <div class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center gap-2 w-100 w-md-auto">
 
                     <!-- Search -->
-                    <div class="position-relative" style="width:340px;">
+                    <div class="position-relative search-box">
 
                         <i class="bi bi-search position-absolute"
                            style="left:15px; top:50%; transform:translateY(-50%); color:#6c757d; z-index:5;"></i>
@@ -83,7 +81,7 @@
                     <!-- Filter Button -->
                     <div class="dropdown">
 
-                        <button class="btn btn-light rounded-pill px-3"
+                        <button class="btn btn-light rounded-pill px-3 w-100"
                                 type="button"
                                 data-bs-toggle="dropdown">
 
@@ -549,21 +547,18 @@
         border-left: 4px solid #7C3AED;
         border-radius: 12px;
         padding: 14px 18px;
+        font-weight: 600;
+        color: #374151;
         min-height: 52px;
         display: flex;
         align-items: center;
-        font-weight: 600;
-        color: #374151;
     }
 
     .modal-content {
         border-radius: 22px;
     }
 
-    .modal-header {
-        border: none;
-    }
-
+    .modal-header,
     .modal-footer {
         border: none;
     }
@@ -576,4 +571,122 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 18px rgba(124,58,237,.25);
         }
+
+    /* ---------- Desktop ---------- */
+
+    .search-box {
+        width: 340px;
+    }
+
+    .add-course-btn {
+        width: auto;
+    }
+
+    .course-card-header {
+        flex-direction: row;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 6px;
+    }
+
+        .action-buttons .btn {
+            margin: 2px;
+        }
+
+    /* ---------- Tablet ---------- */
+
+    @@media (max-width:991.98px) {
+
+        .search-box {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .course-card-header {
+            flex-direction: column;
+            align-items: stretch !important;
+            gap: 15px;
+        }
+
+        .card-header h5 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .table-responsive::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb {
+            background: #c9c9c9;
+            border-radius: 10px;
+        }
+
+        .modal-dialog {
+            margin: 1rem;
+        }
+
+        .app-main {
+            min-height: calc(100vh - 120px);
+        }
+    }
+
+    /* ---------- Mobile ---------- */
+
+    @@media (max-width:767.98px) {
+
+        h2 {
+            font-size: 26px;
+        }
+
+        .add-course-btn {
+            width: 100%;
+        }
+
+        .table th,
+        .table td {
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+
+            .action-buttons .btn {
+                width: 36px;
+                height: 36px;
+                padding: 0;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+        .modal-dialog {
+            margin: .6rem;
+        }
+
+        .detail-box {
+            font-size: 14px;
+            padding: 12px;
+        }
+
+        .card {
+            border-radius: 18px;
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .container-fluid {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+    }
 </style>

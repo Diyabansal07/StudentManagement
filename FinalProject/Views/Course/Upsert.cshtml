@@ -315,10 +315,10 @@
 
         <!-- Buttons -->
 
-        <div class="text-end">
+        <div class="d-flex flex-column flex-md-row justify-content-end gap-2 mb-4">
 
             <button type="reset"
-                    class="btn btn-warning text-dark">
+                    class="btn btn-outline-secondary px-4">
 
                 <i class="bi bi-arrow-clockwise me-1"></i>
                 Reset
@@ -326,18 +326,19 @@
             </button>
 
             <a asp-action="Index"
-               class="btn btn-danger ms-2">
+               class="btn btn-outline-danger px-4 d-flex align-items-center justify-content-center">
 
-                <i class="bi bi-x-circle me-1"></i>
+                <i class="bi bi-x-circle me-2"></i>
                 Cancel
 
             </a>
 
             <button type="submit"
-                    class="btn btn-purple ms-2">
+                    class="btn btn-purple px-4">
 
                 <i class="bi bi-check-circle me-1"></i>
-                Save Course
+
+                @(Model.CourseId == 0 ? "Save Course" : "Update Course")
 
             </button>
 
@@ -352,3 +353,42 @@
     <partial name="_ValidationScriptsPartial" />
 
 }
+<style>
+    .form-control,
+    .form-select {
+        min-height: 46px;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+    }
+
+    .btn {
+        min-height: 46px;
+    }
+
+        .btn i {
+            line-height: 1;
+        }
+
+    @@media (max-width:767.98px) {
+
+        .d-flex.flex-column.flex-md-row.justify-content-end .btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    @@media (max-width:767.98px) {
+
+        .d-flex.flex-column.flex-md-row.justify-content-end {
+            gap: .75rem !important;
+        }
+
+            .d-flex.flex-column.flex-md-row.justify-content-end .btn {
+                width: 100%;
+            }
+    }
+</style>

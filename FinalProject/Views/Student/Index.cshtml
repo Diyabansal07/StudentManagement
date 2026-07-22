@@ -1,74 +1,4 @@
-﻿@* @page
-@model FinalProject.Views.Student.IndexModel
-@{
-} *@
-
-@* @{
-    Layout = "~/Views/Shared/MyLayout.cshtml";
-}
-@model IEnumerable<Student>
-<div class="container mt-4">
-<div class="card p-4 shadow-sm border-0">
-    <h2>Student List</h2>
-
-        <div class="d-flex justify-content-end mb-3">
-            <a asp-action="Upsert" class="btn btn-purple">
-                Add Student
-            </a>
-        </div>
-    @if (Model != null)
-    {
-
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>StudentId</th>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Course</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.StudentId</td>
-                        <td>@item.FirstName @item.LastName</td>
-                        <td>@item.Department</td>
-                        <td>@item.Course</td>
-                        <td>@item.Status</td>
-
-                        <td>
-                            <a asp-action="Details"
-                               asp-route-id="@item.StudentId"
-                               class="btn btn-purple">
-                                Details
-                            </a>
-
-                                <a asp-action="Upsert"
-                               asp-route-id="@item.StudentId"
-                               class="btn btn-warning">
-                                Edit
-                            </a>
-
-                            <a asp-action="Delete"
-                               asp-route-id="@item.StudentId"
-                               class="btn btn-danger">
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-</div>
-</div> *@
-
-@model IEnumerable<Student>
+﻿@model IEnumerable<Student>
 
 @{
     Layout = "~/Views/Shared/MyLayout.cshtml";
@@ -77,7 +7,7 @@
 <div class="container-fluid py-4">
 
     <!-- Page Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap student-card-header mb-4">
 
         <div>
             <h2 class="text-purple fw-bold mb-1">
@@ -90,14 +20,15 @@
             </p>
         </div>
 
-        <a asp-controller="Student"
-           asp-action="Upsert"
-           class="btn btn-purple">
+        <button type="button"
+                class="btn btn-purple add-student-btn"
+                data-bs-toggle="modal"
+                data-bs-target="#courseWarningModal">
 
             <i class="bi bi-plus-circle me-2"></i>
             Add Student
 
-        </a>
+        </button>
 
     </div>
 
@@ -120,7 +51,7 @@
 
         <div class="card-header card-header-purple py-3">
 
-            <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
 
                 <!-- Heading -->
                 <h5 class="text-white fw-semibold mb-0">
@@ -129,10 +60,10 @@
                 </h5>
 
                 <!-- Search + Filter -->
-                <div class="d-flex align-items-center gap-2">
+                <div class="d-flex flex-column flex-md-row align-items-stretch align-items-md-center gap-2 w-100 w-md-auto">
 
                     <!-- Search -->
-                    <div class="position-relative" style="width:340px;">
+                    <div class="position-relative search-box">
 
                         <i class="bi bi-search position-absolute"
                            style="left:15px; top:50%; transform:translateY(-50%);
@@ -148,7 +79,7 @@
                     <!-- Filter -->
                     <div class="dropdown">
 
-                        <button class="btn btn-light rounded-pill px-3"
+                        <button class="btn btn-light rounded-pill px-3 w-100"
                                 type="button"
                                 data-bs-toggle="dropdown">
 
@@ -264,7 +195,7 @@
                                 </td>
 
                                 <td>
-
+                                   <div class="action-buttons">
                                     <!-- VIEW -->
 
                                     <button type="button"
@@ -306,7 +237,7 @@
                                         <i class="bi bi-trash"></i>
 
                                     </a>
-
+                                  </div>
                                 </td>
 
                             </tr>
@@ -504,6 +435,79 @@
         </div>
     </div>
 </div>
+<!-- Course Warning Modal -->
+
+<div class="modal fade"
+     id="courseWarningModal"
+     tabindex="-1"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content border-0">
+
+            <div class="modal-header bg-warning text-dark">
+
+                <h5 class="modal-title">
+
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+
+                    Before Adding a Student
+
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="alert alert-warning mb-0">
+
+                    <strong>Important!</strong>
+
+                    <br /><br />
+
+                    Please ensure that the student's
+                    <strong>Course</strong> has already been added in the
+                    <strong>Course Management</strong> section.
+
+                    <br /><br />
+
+                    Only courses already available in the system will appear
+                    in the Course dropdown during Student Registration.
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                    Cancel
+
+                </button>
+
+                <a asp-controller="Student"
+                   asp-action="Upsert"
+                   class="btn btn-purple">
+
+                    Continue
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 @section Scripts {
 
@@ -654,5 +658,159 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 18px rgba(124,58,237,.25);
         }
+
+    .add-student-btn {
+        width: auto;
+    }
+
+    .card-header h5 {
+        margin-bottom: 0;
+    }
+    @@media (max-width:767.98px) {
+
+        .add-student-btn {
+            width: 100%;
+        }
+
+        .card {
+            border-radius: 18px;
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .container-fluid {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+    }
+    /* ==========================================
+       STUDENT PAGE RESPONSIVE
+    ========================================== */
+
+    .search-box {
+        width: 340px;
+    }
+    @@media (min-width:992px) {
+
+        .search-box {
+            width: 340px;
+            flex-shrink: 0;
+        }
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 6px;
+    }
+    .action-buttons .btn {
+        margin: 2px;
+    }
+
+    .student-card-header {
+        flex-direction: row;
+    }
+
+    @@media (max-width:991.98px) {
+
+        .search-box {
+            width: 100%;
+            max-width: 100%;
+        }
+
+ 
+
+        .student-card-header {
+            flex-direction: column;
+            align-items: stretch !important;
+            gap: 15px;
+        }
+    
+          .card-header .d-flex {
+             gap: 15px;
+          }
+
+            .card-header h5 {
+             text-align: center;
+             margin-bottom: 0;
+             }
+        
+            .table-responsive::-webkit-scrollbar {
+                height: 4px;
+            }
+
+            .table-responsive::-webkit-scrollbar-thumb {
+                background: #c9c9c9;
+                border-radius: 10px;
+            }
+
+        .modal-dialog {
+            margin: 1rem;
+        }
+
+        .app-main {
+            min-height: calc(100vh - 120px);
+        }
+        .card-header .d-flex > div:last-child {
+            width: 100%;
+        }
+
+        .dropdown {
+            margin-left: 8px;
+        }
+    }
+
+    @@media (max-width:767.98px) {
+
+        h2 {
+            font-size: 26px;
+        }
+
+        .add-student-btn {
+            width: 100%;
+        }
+
+        .table th,
+        .table td {
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+
+            .action-buttons .btn {
+                width: 36px;
+                height: 36px;
+                padding: 0;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+        .modal-dialog {
+            margin: .6rem;
+        }
+
+        .detail-box {
+            font-size: 14px;
+            padding: 12px;
+        }
+    }
+
+    #courseWarningModal .modal-dialog {
+        margin: 1.75rem auto;
+    }
+
+    @@media (max-width:768px) {
+        #courseWarningModal .modal-dialog {
+            margin: .75rem;
+        }
+    }
 
 </style>

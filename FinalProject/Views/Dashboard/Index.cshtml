@@ -1,123 +1,7 @@
-﻿@* @{
-    Layout = "~/Views/Shared/MyLayout.cshtml";
-}
-
-<main class="app-main">
-
-    <!-- Page Header -->
-    <div class="app-content-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h3 class="mb-0">Student Management Dashboard</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Page Content -->
-    <div class="app-content">
-        <div class="container-fluid">
-
-            <div class="row">
-
-                <!-- Total Students -->
-                <div class="col-lg-3 col-6">
-                    <div class="small-box text-bg-primary">
-                        <div class="inner">
-                            <h3>150</h3>
-                            <p>Total Students</p>
-                        </div>
-
-                        <svg class="small-box-icon"
-                             fill="currentColor"
-                             viewBox="0 0 24 24"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0z"></path>
-                        </svg>
-
-                        <a href="#" class="small-box-footer">
-                            More Info <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Courses -->
-                <div class="col-lg-3 col-6">
-                    <div class="small-box text-bg-success">
-                        <div class="inner">
-                            <h3>12</h3>
-                            <p>Total Courses</p>
-                        </div>
-
-                        <svg class="small-box-icon"
-                             fill="currentColor"
-                             viewBox="0 0 24 24"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"></path>
-                        </svg>
-
-                        <a href="#" class="small-box-footer">
-                            More Info <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Attendance -->
-                <div class="col-lg-3 col-6">
-                    <div class="small-box text-bg-warning">
-                        <div class="inner">
-                            <h3>89%</h3>
-                            <p>Attendance Rate</p>
-                        </div>
-
-                        <svg class="small-box-icon"
-                             fill="currentColor"
-                             viewBox="0 0 24 24"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75H3v-6.75z"></path>
-                        </svg>
-
-                        <a href="#" class="small-box-footer">
-                            More Info <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Fees -->
-                <div class="col-lg-3 col-6">
-                    <div class="small-box text-bg-danger">
-                        <div class="inner">
-                            <h3>₹50K</h3>
-                            <p>Fees Collected</p>
-                        </div>
-
-                        <svg class="small-box-icon"
-                             fill="currentColor"
-                             viewBox="0 0 24 24"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"></path>
-                        </svg>
-
-                        <a href="#" class="small-box-footer">
-                            More Info <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-</main> *@
-
-@model FinalProject.Models.Dashboard
+﻿@model FinalProject.Models.Dashboard
 @{
     Layout = "~/Views/Shared/MyLayout.cshtml";
 }
-
-<main class="app-main">
 
     <!-- Dashboard Header -->
     <div class="container-fluid py-4">
@@ -149,10 +33,10 @@
 
         <!-- Statistics -->
 
-        <div class="row g-4">
+        <div class="row g-3">
 
             <!-- Total Students -->
-            <div class="col-xl-3 col-md-6">
+            <div class="col-12 col-sm-6 col-xl-3">
                 <a asp-controller="Student"
                    asp-action="Index"
                    class="stats-card">
@@ -179,7 +63,7 @@
 
 
             <!-- Total Courses -->
-            <div class="col-xl-3 col-md-6">
+            <div class="col-12 col-sm-6 col-xl-3">
                 <a asp-controller="Course"
                    asp-action="Index"
                    class="stats-card">
@@ -206,7 +90,7 @@
 
 
             <!-- Active Students -->
-            <div class="col-xl-3 col-md-6">
+            <div class="col-12 col-sm-6 col-xl-3">
                 <a asp-controller="Student"
                    asp-action="Index"
                    class="stats-card">
@@ -233,7 +117,7 @@
 
 
             <!-- Active Courses -->
-            <div class="col-xl-3 col-md-6">
+            <div class="col-12 col-sm-6 col-xl-3">
                 <a asp-controller="Course"
                    asp-action="Index"
                    class="stats-card">
@@ -259,119 +143,7 @@
 
         </div>
 
-        <!-- Quick Actions -->
-        @* <div class="card shadow border-0 mt-4">
-
-            <div class="card-header bg-white d-flex align-items-center justify-content-between">
-
-                <h5 class="mb-0 fw-bold">
-                    
-                    Quick Actions
-                </h5>
-
-                <small class="text-muted">
-                    Frequently Used Actions
-                </small>
-
-            </div>
-
-            <div class="card-body">
-
-                <div class="row g-3">
-
-                    <div class="col-md-4">
-
-                        <a asp-controller="Student"
-                           asp-action="Upsert"
-                           class="quick-action-btn btn btn-outline-primary">
-
-                            <i class="bi bi-person-plus-fill fs-4 mb-2"></i>
-
-                            <span>Add Student</span>
-
-                        </a>
-
-                    </div>
-
-                    <div class="col-md-4">
-
-                        <a asp-controller="Course"
-                           asp-action="Index"
-                           class="quick-action-btn btn btn-outline-success">
-
-                            <i class="bi bi-book-half fs-4 mb-2"></i>
-
-                            <span>Course Directory</span>
-
-                        </a>
-
-                    </div>
-
-                    <div class="col-md-4">
-
-                        <a href="#"
-                           class="quick-action-btn btn btn-outline-danger">
-
-                            <i class="bi bi-bar-chart-line-fill fs-4 mb-2"></i>
-
-                            <span>Reports</span>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div> *@
-        @* <div class="dashboard-card mt-4">
-
-            <h3 class="mb-4">Quick Actions</h3>
-
-            <div class="quick-actions-grid">
-
-                <a asp-controller="Student"
-                   asp-action="Upsert"
-                   class="action-card">
-
-                    <i class="fas fa-user-plus"></i>
-                    <h5>Add Student</h5>
-                    <p>Create Student profile</p>
-
-                </a>
-
-                <a asp-controller="Student"
-                   asp-action="Index"
-                   class="action-card">
-
-                    <i class="fas fa-users"></i>
-                    <h5>Student Directory</h5>
-                    <p>Manage Student</p>
-
-                </a>
-
-                <a asp-controller="Course"
-                   asp-action="Upsert"
-                   class="action-card">
-
-                    <i class="fas fa-building"></i>
-                    <h5>Add Course</h5>
-                    <p>Create Course profile</p>
-
-                </a>
-
-                <a asp-controller="Course"
-                   asp-action="Index"
-                   class="action-card">
-
-                    <i class="fas fa-folder-open"></i>
-                    <h5>Course Directory</h5>
-                    <p>Manage Courses</p>
-
-                </a>
-
-            </div>
-
-        </div> *@
+        
         <div class="dashboard-card mt-3">
 
             <h3 class="section-title">
@@ -433,9 +205,7 @@
             </div>
 
         </div>
-        </div>
-
-        </div>
+      
         <div class="card shadow border-0 mt-4">
 
             <div class="card-header bg-white">
@@ -446,6 +216,7 @@
 
             <div class="card-body p-0">
 
+             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
 
                     <thead class="table-light">
@@ -506,53 +277,63 @@
                         }
 
                     </tbody>
-
+                
                 </table>
-
+             </div>
             </div>
 
         </div>
   <style>
+            html,
+            body {
+                overflow-x: hidden;
+                max-width: 100%;
+            }
+
+            .app-wrapper,
+            .app-main,
+            .app-content,
+            .container-fluid {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
         /*=====================================
         WELCOME
         ======================================*/
 
-        .welcome-banner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 32px;
-            border-radius: 22px;
-            background: linear-gradient(135deg,#5B3DF5,#7C3AED,#A855F7);
-            color: #fff;
-            box-shadow: 0 12px 30px rgba(91,61,245,.18);
-            margin-bottom: 28px;
-            min-height: 145px;
-        }
-
-            .welcome-banner h1 {
-                font-size: 34px;
-                font-weight: 700;
-                margin-bottom: 8px;
+            .welcome-banner {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 20px;
+                padding: 24px 30px;
+                border-radius: 22px;
+                background: linear-gradient(135deg,#5B3DF5,#7C3AED,#A855F7);
+                color: #fff;
+                box-shadow: 0 12px 30px rgba(91,61,245,.18);
             }
 
-            .welcome-banner p {
-                font-size: 15px;
-                line-height: 1.6;
-                max-width: 550px;
-                opacity: .92;
-            }
+                .welcome-banner h1 {
+                    font-size: 34px;
+                    font-weight: 700;
+                    margin-bottom: 8px;
+                }
 
-        .year-box {
-            padding: 16px 28px;
-            border-radius: 16px;
-            background: rgba(255,255,255,.16);
-            backdrop-filter: blur(12px);
-        }
+                .welcome-banner p {
+                    max-width: 560px;
+                    line-height: 1.6;
+                }
 
-            .year-box h4 {
-                font-size: 22px;
-                margin-top: 4px;
+            .year-box {
+                padding: 18px 28px;
+                border-radius: 18px;
+                background: rgba(255,255,255,.18);
+                backdrop-filter: blur(10px);
             }
         /*=====================================
         STAT CARDS
@@ -586,7 +367,7 @@
             }
 
             .stats-card:hover {
-                transform: translateY(-10px) scale(1.03);
+                transform: translateY(-6px);
                 box-shadow: 0 25px 55px rgba(124,58,237,.28);
             }
 
@@ -629,7 +410,9 @@
             .stats-card:hover .stats-icon i {
                 color: white;
             }
-
+            .dashboard-card {
+                margin-top: 28px;
+            }
         /*=====================================
         QUICK ACTIONS
         ======================================*/
@@ -642,11 +425,11 @@
             letter-spacing: -.3px;
         }
 
-        .quick-actions-grid {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 18px;
-        }
+            .quick-actions-grid {
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                gap: 20px;
+            }
 
         .action-card {
             padding: 18px 22px;
@@ -763,41 +546,135 @@
             .table tbody tr td:last-child {
                 border-radius: 0 14px 14px 0;
             }
-            .badge-active{
+    .badge-active{
+        background: #E9F9F0;
+        color: #13A463;
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 13px;
+    }
 
-background:#E9F9F0;
+    .badge-inactive {
+        background: #F4F4F5;
+        color: #666;
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 13px;
+    }
+            /* ===========================
+            TABLET
+            =========================== */
 
-color:#13A463;
+            @@media (max-width:991px) {
 
-padding:6px 14px;
+                .welcome-banner {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    text-align: left;
+                }
 
-border-radius:30px;
+                .year-box {
+                    width: 100%;
+                    text-align: center;
+                }
 
-font-weight:600;
+                .quick-actions-grid {
+                    grid-template-columns: repeat(2,1fr);
+                }
+            }
+            /* ===========================
+            MOBILE
+            =========================== */
 
-font-size:13px;
+            @@media (max-width:576px) {
 
-}
+                .container-fluid {
+                    padding-left: 12px;
+                    padding-right: 12px;
+                }
 
-.badge-inactive{
+                .welcome-banner {
+                    width: 100%;
+                    max-width: 100%;
+                    padding: 22px;
+                    border-radius: 20px;
+                }
 
-background:#F4F4F5;
+                    .welcome-banner h1 {
+                        font-size: 30px;
+                    }
 
-color:#666;
+                    .welcome-banner p {
+                        font-size: 15px;
+                    }
 
-padding:6px 14px;
+                .year-box {
+                    width: 100%;
+                }
 
-border-radius:30px;
+                .stats-card {
+                    width: 100%;
+                    padding: 20px;
+                }
 
-font-weight:600;
 
-font-size:13px;
+                .stats-left h2 {
+                    font-size: 28px;
+                }
 
-}
+                .stats-left small {
+                    font-size: 13px;
+                }
+
+                .stats-left span {
+                    font-size: 13px;
+                }
+
+                .stats-icon {
+                    width: 55px;
+                    height: 55px;
+                }
+
+                    .stats-icon i {
+                        font-size: 24px;
+                    }
+
+                .quick-actions-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .action-card {
+                    text-align: center;
+                    padding: 24px;
+                }
+
+                .action-icon {
+                    margin: auto auto 16px;
+                }
+
+                .action-card h5 {
+                    font-size: 18px;
+                }
+
+                .action-card p {
+                    font-size: 13px;
+                }
+
+                .section-title {
+                    font-size: 22px;
+                }
+
+                .table {
+                    font-size: 14px;
+                }
+
+                    .table th,
+                    .table td {
+                        white-space: nowrap;
+                        padding: 12px;
+                    }
+            }
+   
   </style>
-       
-       
-
-    
-
-</main>

@@ -1,145 +1,11 @@
-﻿@* @page
-@model FinalProject.Views.Student.CreateModel
-@{
-} *@
-
-@{
+﻿@{
     Layout = "~/Views/Shared/MyLayout.cshtml";
 }
 @model Student
-@* <div class="card p-4 shadow-sm border-0">
-    <div class="container mt-4">
-        <h2>Add Student</h2>
 
-        <form asp-action="Upsert" method="post">
-            <div class="student-card">
-                <div class="section-title">
-                    Personal Information
-                </div>
+<div class="container-fluid px-2 px-md-4 py-4">
 
-                <input type="hidden" asp-for="StudentId" />
-
-
-                <div class="row">
-                    <div class="col-6">
-                        <label>First Name</label>
-                        <input asp-for="FirstName" class="form-control" />
-                    </div>
-
-                    <div class="col-6">
-                        <label>Last Name</label>
-                        <input asp-for="LastName" class="form-control" />
-                    </div>
-
-                </div>
-              
-                <div class="mb-3">
-                    <label class="form-label d-block">Gender</label>
-
-                    <div class="form-check form-check-inline">
-                        <input type="radio" asp-for="Gender" value="Male"
-                               class="form-check-input" />
-                        <label class="form-check-label">Male</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input type="radio" asp-for="Gender" value="Female"
-                               class="form-check-input" />
-                        <label class="form-check-label">Female</label>
-                    </div>
-
-                    <div class="mb-3">
-                        <label asp-for="DateOfBirth" class="form-label"></label>
-                        <input asp-for="DateOfBirth" type="date" class="form-control" />
-                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Phone Number</label>
-                        <input asp-for="PhoneNumber" class="form-control" />
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Address</label>
-                        <input asp-for="Address" class="form-control" />
-                    </div>
-
-                    <div class="section-title">
-                        Professional Information
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Email</label>
-                        <input asp-for="Email" class="form-control" />
-                    </div>
-
-       
-
-                    <div class="col-md-6 mb-3">
-                        <label>Department</label>
-                        <select asp-for="Department"
-                                asp-items="ViewBag.Departments"
-                                class="form-select">
-                            <option value="Computer Science">Computer Science</option>
-                            <option value="Information Technology">Information Technology</option>
-                            <option value="Electronics and Communication">Electronics and Communication</option>
-                            <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        </select>
-                    </div>
-
-
-                    <div class="mb-3">
-                        <label>Course</label>
-                        <select asp-for="Course"
-                                asp-items="ViewBag.Course"
-                                class="form-select">
-                            <option value="BCA">BCA</option>
-                            <option value="Information Technology">Information Technology</option>
-                            <option value="Electronics and Communication">Electronics and Communication</option>
-                            <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Section</label>
-                        <input asp-for="Section" class="form-control" />
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Semester</label>
-                        <input asp-for="Semester" class="form-control" />
-                    </div>
-
-                    <div class="mb-3">
-                        <label>AdmissionDate</label>
-                        <input asp-for="AdmissionDate" type="date" class="form-control" />
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Status</label>
-                        <input asp-for="Status" class="form-control" />
-                    </div>
-
-                    <button type="submit"
-                            class="btn btn-success">
-                        Save Student
-                    </button>
-
-             
-                </div>
-            </div>
-
-        </form>
-    </div>
-</div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-} *@
-
-<div class="container py-4">
-
-    <div class="text-center mb-4">
+    <div class="text-center text-md-center mb-4">
         <h2 class="fw-bold text-purple">
             Student Registration
         </h2>
@@ -375,26 +241,7 @@
 
                     <div class="col-md-6 mb-3">
 
-                      @*   <label asp-for="Course"
-                               class="form-label fw-semibold">
-                        </label>
-
-                        <select asp-for="Course"
-                                asp-items="ViewBag.Course"
-                                class="form-select">
-
-                            <option value="">-- Select Course --</option>
-
-                            <option value="BCA">BCA</option>
-                            <option value="B.Tech">B.Tech</option>
-                            <option value="B.Sc">B.Sc</option>
-                            <option value="B.Com">B.Com</option>
-                            <option value="MCA">MCA</option>
-
-                        </select>
-
-                        <span asp-validation-for="Course"
-                              class="text-danger"></span> *@
+                    
                        
                         <label asp-for="CourseId"
                                class="form-label fw-semibold">
@@ -522,7 +369,7 @@
 
         <!-- Buttons -->
 
-        <div class="d-flex justify-content-end gap-2 mb-4">
+        <div class="d-flex flex-column flex-md-row justify-content-end gap-2 mb-4">
 
             <button type="reset"
                     class="btn btn-outline-secondary px-4">
@@ -556,3 +403,72 @@
     <partial name="_ValidationScriptsPartial" />
 
 }
+<style>
+    .form-control,
+    .form-select {
+        min-height: 46px;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+    }
+
+    .form-check-inline {
+        margin-right: 18px;
+    }
+
+    @@media (max-width:767.98px) {
+
+         .container-fluid {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+        h2 {
+            font-size: 26px;
+        }
+
+        .card {
+            margin-bottom: 16px;
+            border-radius: 16px;
+        }
+
+        .card-header {
+            text-align: center;
+            font-size: 18px;
+            padding: .85rem 1rem;
+        }
+
+        .card-body {
+            padding: .9rem;
+        }
+
+        .form-control,
+        .form-select {
+            min-height: 44px;
+            font-size: 15px;
+        }
+
+        textarea.form-control {
+            min-height: 90px;
+        }
+
+        .form-check-inline {
+            display: block;
+            margin: 0 0 10px 0;
+        }
+
+        .d-flex.justify-content-end.gap-2.mb-4 {
+            flex-direction: column;
+            gap: .75rem !important;
+        }
+
+            .d-flex.justify-content-end.gap-2.mb-4 .btn {
+                width: 100%;
+            }
+
+        .text-danger {
+            font-size: .85rem;
+        }
+    }
+</style>
